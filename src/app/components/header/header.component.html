@@ -1,0 +1,45 @@
+<mat-toolbar class="justify-between max-w-7xl !mx-auto border-x">
+  <a routerLink="home">Code with Sloba Store</a>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon [matBadge]="1" matBadgeColor="warn">shopping_cart</mat-icon>
+  </button>
+  <mat-menu #menu>
+    <div class="p-3 divide-y divide-solid">
+      <div class="pb-3 flex justify-between">
+        <span class="mr-16">1 Items</span>
+        <a routerLink="cart">ViewCart</a>
+      </div>
+      <div class="py-3">
+        <div class="mb-2 flex justify-between font-light">
+          Keyboard x 1
+          <span class="font-bold">{{ "150" | currency }}</span>
+        </div>
+        <div class="mb-2 flex justify-between font-light">
+          Keyboard x 1
+          <span class="font-bold">{{ "150" | currency }}</span>
+        </div>
+        <div class="mb-2 flex justify-between font-light">
+          Keyboard x 1
+          <span class="font-bold">{{ "150" | currency }}</span>
+        </div>
+      </div>
+
+      <div class="flex justify-between py-3 font-light">
+        Total
+        <span class="font-bold">{{ "150" | currency }}</span>
+      </div>
+    </div>
+
+    <div class="flex justify-between">
+      <button class="bg-rose-600 text-white rounded-full w-9 h-9">
+        <mat-icon>remove_shopping_cart</mat-icon>
+      </button>
+      <button
+        routerLink="cart pt-3"
+        class="bg-green-600 text-white rounded-full w-9 h-9"
+      >
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </div>
+  </mat-menu>
+</mat-toolbar>
