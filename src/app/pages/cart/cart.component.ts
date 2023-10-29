@@ -1,28 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { Cart, CartItem } from "src/app/models/cart.model";
+import { CartService } from "src/app/services/cart.service";
 
 @Component({
   selector: "app-cart",
   templateUrl: "./cart.component.html",
 })
 export class CartComponent implements OnInit {
+  constructor(private cartService: CartService) {}
   cart: Cart = {
-    items: [
-      {
-        id: 1,
-        name: "snikers",
-        product: "https://via.placeholder.com/150",
-        price: 150,
-        quantity: 1,
-      },
-      {
-        id: 2,
-        name: "snikers",
-        product: "https://via.placeholder.com/150",
-        price: 450,
-        quantity: 1,
-      },
-    ],
+    items: [],
   };
 
   dataSource: Array<CartItem> = [];
@@ -35,12 +21,29 @@ export class CartComponent implements OnInit {
     "action",
   ];
   ngOnInit(): void {
-    this.dataSource = this.cart.items;
+    this.cartService.cart.subscribe((_cart) => {
+      this.cart = _cart;
+      this.dataSource = this.cart.items;
+    });
   }
 
   getTotal(items: Array<CartItem>): number {
-    return items
-      .map((item) => item.quantity * item.price)
-      .reduce((prev, current) => prev + current, 0);
+    return this.cartService.getTotal(items);
+  }
+
+  onClearCart() {
+    this.cartService.clearCart();
+  }
+
+  onRemoveFromCart(item: CartItem) {
+    this.cartService.removeFromCart(item);
+  }
+
+  onAddQuantity(item: CartItem) {
+    this.cartService.addQuantity(item);
+  }
+
+  onRemoveQuantity(item: CartItem) {
+    this.cartService.removeQuantity(item);
   }
 }

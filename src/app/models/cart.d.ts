@@ -1,8 +1,8 @@
-export interface Cart {
+interface Cart {
   items: CartItem[];
 }
 
-export interface CartItem {
+interface CartItem {
   id: number;
   product: string;
   name: string;
