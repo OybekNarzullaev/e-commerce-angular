@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   selector: "app-products-header",
@@ -6,6 +6,7 @@ import { Component, EventEmitter, Output } from "@angular/core";
 })
 export class ProductsHeaderComponent {
   @Output() columnsCountChange = new EventEmitter();
+  @Input() cols: number = 3;
 
   sort = "sort";
   itemsShowCount = 12;

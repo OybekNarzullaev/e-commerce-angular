@@ -7,6 +7,7 @@
   </mat-drawer>
   <mat-drawer-content class="p-6">
     <app-products-header
+      [cols]="cols"
       (columnsCountChange)="onColumnsCountChange($event)"
     ></app-products-header>
 
